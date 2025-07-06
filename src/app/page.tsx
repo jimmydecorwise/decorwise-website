@@ -141,11 +141,11 @@ export default function Home() {
           <Image
             src={heroImage}
             alt="Beautiful home exterior with fresh paint"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-40 brightness-110"
             fill
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-transparent" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="max-w-2xl">
@@ -427,58 +427,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Address & Map Section */}
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Location</h2>
-            <div className="h-1 w-20 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">Visit us at our office or get in touch for a free consultation</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200">Contact Information</h3>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <MapPinIcon className="h-6 w-6 text-blue-600 mt-1 mr-4 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900 text-lg">Address</h4>
-                    <p className="text-gray-800 mt-1">13 Kilburn Grove<br />Derrimut, VIC 3026<br />Australia</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <PhoneIcon className="h-6 w-6 text-blue-600 mt-1 mr-4 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900 text-lg">Phone</h4>
-                    <p className="text-gray-800 mt-1">+61 123 456 789</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <EnvelopeIcon className="h-6 w-6 text-blue-600 mt-1 mr-4 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900 text-lg">Email</h4>
-                    <p className="text-gray-800 mt-1">info@decorwisepainting.com</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="h-96 bg-gray-200 rounded-lg overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.045130524046!2d144.7537!3d-37.8136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad646b5d2ba4df%3A0x1f1fc46171d58dc9!2s13%20Kilburn%20Grove%2C%20Derrimut%20VIC%203026%2C%20Australia!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                className="w-full h-full"
-                title="Decorwise Painting Location"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
