@@ -1,22 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Decorwise Paintings Website
 
-## Getting Started
+A professional website for Decorwise Paintings, featuring services, gallery, and contact information. This is a static website built with Next.js and designed to be hosted on GitHub Pages.
 
-First, run the development server:
+## Features
+
+- Responsive design that works on all devices
+- Modern UI with smooth animations
+- Static site generation for fast loading
+- Contact form functionality
+- Easy to update and maintain
+
+## Development
+
+First, install the dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Building for Production
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+## Deploying to GitHub Pages
+
+1. Make sure your repository is initialized with Git and connected to GitHub
+2. Run the deployment script:
+   ```bash
+   npm run deploy
+   ```
+3. Go to your GitHub repository's Settings > Pages
+4. Under "Source", select "Deploy from a branch"
+5. Select the `main` branch and `/docs` folder
+6. Click "Save"
+
+Your site will be available at `https://<your-username>.github.io/<repository-name>/`
+
+## Configuration
+
+- Update `next.config.js` if you need to change the base path or other settings
+- The site is configured to output to the `docs` folder for GitHub Pages compatibility
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
