@@ -1,17 +1,12 @@
 [build]
   command = "npm run build"
-  publish = "docs"
+  publish = "out"
 
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
   
-# Required for SPA routing
+# Static site configuration
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-# Disable the Netlify Next.js plugin
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-  enabled = false

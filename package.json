@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && rm -rf docs && mv out docs",
-    "preview": "npx serve@latest docs -p 3000",
+    "build": "next build",
+    "preview": "npx serve@latest out -p 3000",
     "lint": "next lint",
-    "deploy": "npm run build && touch docs/.nojekyll && git add docs && git commit -m 'Deploy to GitHub Pages' && git push"
+    "deploy": "npm run build && touch out/.nojekyll && git add out && git commit -m 'Deploy to GitHub Pages' && git push"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
