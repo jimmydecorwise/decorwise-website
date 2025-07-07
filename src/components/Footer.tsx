@@ -36,7 +36,7 @@ export default function Footer() {
               <li className="flex items-start">
                 <MapPinIcon className="h-5 w-5 text-gray-400 mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-300 text-sm">
-                13 Kilburn Grove<br />Derrimut, VIC 3026<br />Australia
+                16 Pomodoro Rd<br />Tarneit, VIC 3029<br />Australia
                 </span>
               </li>
             </ul>

@@ -382,7 +382,9 @@ export default function Home() {
                     </div>
                     <div className="ml-4">
                       <h4 className="text-sm font-medium text-gray-500">Location</h4>
-                      <p className="text-base text-gray-900">13 Kilburn Grove<br />Derrimut, VIC 3026<br />Australia</p>
+                      <p className="text-base text-gray-900">
+                        16 Pomodoro Rd<br />Tarneit, VIC 3029<br />Australia
+                      </p>
                     </div>
                   </div>
                 </div>
