@@ -1,7 +1,14 @@
 import type { Handler, HandlerEvent, HandlerContext } from '@netlify/functions';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Get API key from environment with better error handling
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+if (!RESEND_API_KEY) {
+  console.error('ERROR: RESEND_API_KEY environment variable is not set');
+  // Don't throw here as it would prevent the function from being deployed
+}
+
+const resend = new Resend(RESEND_API_KEY);
 
 interface EmailPayload {
   name: string;
@@ -56,37 +63,71 @@ return {
       };
     }
 
-    // Send email using Resend
-    const { data, error } = await resend.emails.send({
-      from: 'onboarding@resend.dev', // Replace with your verified sender
-      to: 'your-email@example.com', // Replace with your email
-      subject: `New Contact Form Submission from ${name}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-    });
-
-    if (error) {
-      console.error('Resend error:', error);
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ error: 'Failed to send email', details: error }),
-      };
+    if (!RESEND_API_KEY) {
+      throw new Error('Resend API key is not configured');
     }
 
-return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({ success: true, data }),
-    };
+    try {
+      console.log('Attempting to send email with Resend...');
+      
+      // Ensure the sender email is verified in your Resend account
+      const fromEmail = 'noreply@decorwisepainting.com'; // Must be a verified domain in Resend
+      const toEmail = 'jimmy@decorwisepainting.com'; // Must be a verified email in test mode
+      
+      console.log('Email details:', { fromEmail, toEmail });
+      
+      // Send email using Resend
+      const { data, error } = await resend.emails.send({
+        from: fromEmail,
+        to: toEmail,
+        subject: `New Contact Form Submission from ${name}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+        `,
+      });
+
+      if (error) {
+        console.error('Resend API error:', JSON.stringify(error, null, 2));
+        return {
+          statusCode: 500,
+          headers,
+          body: JSON.stringify({ 
+            error: 'Failed to send email', 
+            details: error,
+            message: error.message || 'Unknown error',
+            name: error.name || 'Error'
+          })
+        };
+      }
+      
+      console.log('Email sent successfully:', data);
+
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({ success: true, data }),
+      };
+    } catch (error) {
+      console.error('Error processing request:', error);
+console.error('Unexpected error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({ 
+          error: 'Internal Server Error',
+          message: errorMessage
+        }),
+      };
+    }
   } catch (error) {
     console.error('Error processing request:', error);
-return {
+    return {
       statusCode: 500,
       headers,
       body: JSON.stringify({ 
