@@ -5,8 +5,13 @@
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
   
-# Static site configuration
+# Required for SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Disable the Netlify Next.js plugin
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  enabled = false
