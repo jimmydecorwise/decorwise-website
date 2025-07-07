@@ -1,12 +1,12 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
 
 [build.environment]
-  NEXT_USE_NODE_NAMESPACE = "true"
-
-[functions]
-  directory = ".next/functions"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+  NEXT_TELEMETRY_DISABLED = "1"
+  
+# Static site configuration
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
