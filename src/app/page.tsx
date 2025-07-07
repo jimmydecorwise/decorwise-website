@@ -18,7 +18,7 @@ const serviceImages = {
 const services = [
   {
     name: 'Interior Painting',
-    description: 'Transform your indoor spaces with our professional interior painting services. We use premium paints and techniques to give your home a fresh, modern look.',
+    description: 'Transform your indoor spaces with our professional services. We use premium paints and techniques to give your home a fresh, modern look.',
     icon: HomeIcon,
     image: serviceImages.interior,
   },
